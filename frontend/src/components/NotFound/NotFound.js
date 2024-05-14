@@ -1,9 +1,13 @@
 
+import "./NotFound.css"; 
+import { NavLink } from "react-router-dom"; 
+
 function NotFound() {
   return (
-    <>
-      NOT FOUND PAGE SHOULD BE HERE
-    </>
+    <main className="notfound-page">
+      LA PAGE QUE VOUS RECHERCHEZ N'EXISTE PAS.
+      <NavLink to="/" className="notfound-link">RETOUR À L'ACCUEIL</NavLink>
+    </main>
   )
 }
 
