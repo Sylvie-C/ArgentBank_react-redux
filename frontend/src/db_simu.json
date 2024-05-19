@@ -1,0 +1,22 @@
+{
+  "user01" : {
+    "email" : "tony@stark.com" , 
+    "password" : "password123" , 
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDIwYzBhYjQyNzMwMTRiNWMyZTA0MSIsImlhdCI6MTcxNjAxOTI4MCwiZXhwIjoxNzE2MTA1NjgwfQ.JF3DoT8WQqoOdXS0vO4CdbsU7YNonz0oHhjJegN8AXY", 
+    "username" : "Tony"
+  }
+  , 
+  "user02" : {
+    "email" : "steve@rogers.com" , 
+    "password" : "password456" , 
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDc3MmE5OTZmNzU5MTM5MTYwZDMzOSIsImlhdCI6MTcxNjAxOTU2MSwiZXhwIjoxNzE2MTA1OTYxfQ.9mNSwADGCkgiLNh4HPcpiP9jKtsL0lyj794kZJMBsNA", 
+    "username" : "Steve"
+  }
+  , 
+  "user03" : {
+    "email" : "wonder@woman.fr" , 
+    "password" : "password789" , 
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDc3OGY0YjFjZTkxMjM0YTMzZWFjNyIsImlhdCI6MTcxNjAxOTY2MywiZXhwIjoxNzE2MTA2MDYzfQ.U6n0jldINW_Bw6y1keTZeuzmJkzLZIQPrW0_605bThI", 
+    "username" : "Diana"
+  }
+}
