@@ -5,8 +5,8 @@ import { NavLink } from "react-router-dom";
 function NotFound() {
   return (
     <main className="notfound-page">
-      LA PAGE QUE VOUS RECHERCHEZ N'EXISTE PAS.
-      <NavLink to="/" className="notfound-link">RETOUR À L'ACCUEIL</NavLink>
+      404 : Oups ! Nothing here ! 
+      <NavLink to="/" className="notfound-link">Back Home</NavLink>
     </main>
   )
 }

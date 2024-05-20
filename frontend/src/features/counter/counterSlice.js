@@ -1,10 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchCount } from './counterAPI';
 
-const initialState = {
-  value: 0,
-  status: 'idle',
-};
+const initialState = { value: 0, status: 'idle', };
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
@@ -21,7 +18,7 @@ export const incrementAsync = createAsyncThunk(
 );
 
 export const counterSlice = createSlice({
-  name: 'myCounter',
+  name: 'counter',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {

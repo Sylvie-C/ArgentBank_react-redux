@@ -11,8 +11,6 @@ export function Counter() {
   const [incrementAmount, setIncrementAmount] = useState('2');
   const incrementValue = Number(incrementAmount) || 0;
 
-  console.log ("count ? : " , count) ; 
-
   return (
     <div>
       <div className={styles.row}>
@@ -27,7 +25,7 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={() => dispatch(increment())}
+          onClick={ () => dispatch(increment()) }
         >
           +
         </button>

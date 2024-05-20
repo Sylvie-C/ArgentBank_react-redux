@@ -1,9 +1,9 @@
 import "./User.css"; 
 import { useSelector } from 'react-redux';
+
 import { getUsername } from "../../app/selectors" ; 
 
 function User() {
-
   const username = useSelector (getUsername) ;   
 
   return (

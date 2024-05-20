@@ -1,6 +1,6 @@
 import { combineReducers , configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
-import userReducer from "../features/featureTest/featuretestSlice"; 
+import signinReducer from "../features/SignIn/signInSlice"; 
 
 let state = {  } ; 
 
@@ -8,7 +8,10 @@ export const store = configureStore(
   {
     preloadedState: state , 
     reducer: combineReducers ({
+      // temporary tests reducers
       counter: counterReducer,
-      user: userReducer,
+
+      // API final reducers
+      signin : signinReducer, 
     }), 
 });
