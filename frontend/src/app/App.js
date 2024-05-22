@@ -10,15 +10,25 @@ import User from "../features/User/User" ;
 import Footer from "../components/Footer/Footer" ; 
 import NotFound from '../components/NotFound/NotFound';
 
+import PrivateRoute from '../components/PrivateRoute';
+
 function App() {
+
   return (
     <div className="App">
       <Router>
         <Header/>
         <Routes>
+          {/* Prive */}
+          <Route path="/user" element={ 
+            <PrivateRoute>
+              <User/>
+            </PrivateRoute>
+          }/>
+
+          {/* Public */}
           <Route path="/" element={ <Home/> } />
           <Route path="/signin" element= { <SignIn/> } />
-          <Route path="/user" element={ <User/> } />
           <Route path="/notfound" element={ <NotFound/> } />
           <Route path="*" element={<NotFound/>} />
         </Routes>

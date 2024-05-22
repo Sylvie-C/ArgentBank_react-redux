@@ -1,52 +1,35 @@
 
-import { useState , useEffect } from "react"; 
-import { useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom"; 
+import { useDispatch , useSelector } from 'react-redux';
+import { Navigate } from "react-router-dom"; 
+
 import "./SignIn.css" ; 
 import { fetchUserAndToken } from './signInSlice';
-
-// Temporary, for tests
-import { useSelector } from "react-redux" ; 
-import { getToken , getUsername } from "../../app/selectors" ; 
+import { getToken } from "../../app/selectors" ; 
 
 
 function SignIn () {
-
-  // on submit, set local State to "true" and Store token + user data returned from DataBase (redux global API store). 
-  const [ submit , setSubmit ] = useState (false); 
   const dispatch = useDispatch() ; 
+  const tokenStored = useSelector (getToken) ; 
 
+  // Form submit handling function
   const formSubmit = async (event) => {
-
     event.preventDefault() ; 
     const email = event.target.email.value;
     const pwd = event.target.password.value;
-
     const dataInput = { email: email , password: pwd }; 
-    const dataIn = JSON.stringify(dataInput) ; 
 
-    dispatch ( fetchUserAndToken(dataIn) ) ; 
-    setSubmit (true) ; 
+    if (email==="" || pwd ==="" ) {
+      alert ("Enter your email and password to connect to your account."); 
+    }else{
+      const dataIn = JSON.stringify(dataInput) ;
+      dispatch ( fetchUserAndToken(dataIn) )      // user data and token in API Redux Store
+    }
   }
 
-  // temporary code : check Storage
-  const usernameStored = useSelector(getUsername) ; 
-  console.log ("username from Store ? : " , usernameStored) ; 
-
-  // on submit, if a token is stored (meaning authentication ok), navigate to "/user" page, otherwise to "/notfound"
-  const tokenStored = useSelector (getToken) ; 
-  const navigate = useNavigate() ; 
-
-  useEffect(() => {
-    if (tokenStored) {
-      navigate('/user');
-    } else {
-      if (submit) {
-        navigate("/notfound") ; 
-      }
-    }
-  }, [tokenStored]);
-  
+  // if connected, redirect to user page
+  if (tokenStored) { 
+    return <Navigate to="/user"/> 
+  } 
 
   return (
     <main className="sign-in-container">
@@ -56,7 +39,7 @@ function SignIn () {
         <form onSubmit={ (e) => formSubmit(e) }>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
-            <input type="text" id="email" name="email"/>
+            <input type="email" id="email" name="email"/>
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>

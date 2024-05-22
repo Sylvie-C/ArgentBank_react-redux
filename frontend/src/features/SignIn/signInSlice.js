@@ -1,12 +1,14 @@
 import { createSlice , createAsyncThunk } from "@reduxjs/toolkit" ; 
-import { fetchToken , fetchUser } from "./SignInAPI" ; 
+import { fetchToken , fetchUser } from "./signInAPI" ; 
 
 // async thunk to fetch user and token from DB
+
 export const fetchUserAndToken = createAsyncThunk (
   "signin/fetchUserAndToken" , 
   async (dataIn) => {
-    const tokenResponse = await fetchToken(dataIn)
-    const token = tokenResponse.body.token ; 
+    const response = await fetchToken(dataIn) ;
+
+    const token = response.body.token ; 
 
     const userResponse = await fetchUser(token) ; 
     const userData = userResponse.body ;
@@ -15,13 +17,15 @@ export const fetchUserAndToken = createAsyncThunk (
   }
 ) ; 
 
-// Reducers
 const initialState = { token: "" , username: "" };
 
 export const signinSlice = createSlice ({
   name: "signin" , 
   initialState, 
-  reducers : {  // basic reducers here
+  reducers : {  
+    resetToken: (state) => { 
+      state.token = null 
+    } , 
   }
   ,
   extraReducers: (builder) => {
@@ -34,6 +38,8 @@ export const signinSlice = createSlice ({
     )
   }
 }) ;
+
+export const { resetToken } = signinSlice.actions ; 
 
 export default signinSlice.reducer ; 
 

@@ -1,6 +1,5 @@
 import "./User.css"; 
 import { useSelector } from 'react-redux';
-
 import { getUsername } from "../../app/selectors" ; 
 
 function User() {
@@ -47,4 +46,4 @@ function User() {
   )
 }
 
-export default User; 
+export default User ; 
