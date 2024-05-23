@@ -1,9 +1,14 @@
 import "./User.css"; 
-import { useSelector } from 'react-redux';
-import { getUsername } from "../../app/selectors" ; 
+/* import { useSelector } from 'react-redux';
+import { getUsername } from "../../app/selectors" ;  */
 
 function User() {
-  const username = useSelector (getUsername) ;   
+  // const username = useSelector (getUsername) ;   
+  const username = window.localStorage.getItem("username") ;
+
+  console.log ("USERNAME FROM USER COMP : " , username) ; 
+
+  window.localStorage.removeItem("username") ; 
 
   return (
     <main className="user-container">
