@@ -6,10 +6,6 @@ function User() {
   // const username = useSelector (getUsername) ;   
   const username = window.localStorage.getItem("username") ;
 
-  console.log ("USERNAME FROM USER COMP : " , username) ; 
-
-  window.localStorage.removeItem("username") ; 
-
   return (
     <main className="user-container">
       <div className="header">
