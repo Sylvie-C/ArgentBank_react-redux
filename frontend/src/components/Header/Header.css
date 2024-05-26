@@ -1,5 +1,5 @@
 
-.main-nav {
+.main-nav , .editmode-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,4 +37,34 @@
 
 .fa-user-circle {
   margin-right: 4px; 
+}
+
+/* -------  EDIT MODE  ------- */
+.editmode-nav * {
+  color: #42b983;
+}
+
+.editmode-link {
+  text-decoration: none; 
+  cursor: pointer; 
+}
+
+.editmode-nav-logo {
+  display: flex; 
+  align-items: center; 
+}
+
+.editmode-nav img {
+  width: 35px; 
+  height: 35px; 
+  margin: 0 10px; 
+}
+
+.editmode-nav-usertools {
+  display: flex; 
+  align-items: center; 
+}
+
+.editmode-nav-usertools * {
+  margin: 0 10px; 
 }

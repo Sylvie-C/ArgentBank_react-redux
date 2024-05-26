@@ -1,17 +1,11 @@
 import "./User.css"; 
-/* import { useSelector } from 'react-redux';
-import { getUsername } from "../../app/selectors" ;  */
+import Hero from "../components/Hero/Hero" ; 
 
 function User() {
-  // const username = useSelector (getUsername) ;   
-  const username = window.localStorage.getItem("username") ;
 
   return (
     <main className="user-container">
-      <div className="header">
-        <h1>Welcome back<br />{username}</h1>
-        <button className="edit-button">Edit Name</button>
-      </div>
+      <Hero />
       <h2 className="sr-only">Accounts</h2>
       <section className="account">
         <div className="account-content-wrapper">

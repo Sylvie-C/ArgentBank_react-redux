@@ -1,25 +1,29 @@
 
-import { useState } from "react" ; 
+
+
 import { useDispatch , useSelector } from 'react-redux';
 import { Navigate } from "react-router-dom"; 
 
 import "./SignIn.css" ; 
-import { fetchUserAndToken } from './signInSlice';
+import { setRememberme , unsetRememberme , fetchUserAndToken } from './signInSlice';
 import { getToken , getUsername } from "../../app/selectors" ; 
 
 
 function SignIn () {
-  const dispatch = useDispatch() ; 
-  const tokenStored = useSelector (getToken) ; 
-  const usernameStored =  useSelector (getUsername) ;
-  const [ rememberMe , setRememberMe ] = useState (false) ; 
 
-  // if "remember me" checked, get username from Store and save it in local storage
-  const rememberName = (event) => {
-    if (event.target.checked) {
-      setRememberMe(true) ; 
+  const dispatch = useDispatch() ;
+ 
+  const usernameStored =  useSelector (getUsername) ;
+  const tokenStored = useSelector (getToken) ;
+
+  // Function to manage "remember me" checkbox action
+  const rememberName = (evt) => {
+    if (evt.target.checked) {
+      window.localStorage.setItem("username" , usernameStored) ; // for next sessions (persistant data)
+      dispatch(setRememberme()) ; // for current session (non-persistant data)
     }else{
-      setRememberMe(false) ; 
+      window.localStorage.removeItem("username") ; // onChange , remove data in localStorage
+      dispatch(unsetRememberme()) ; // for current session only
     }
   }
 
@@ -39,19 +43,9 @@ function SignIn () {
     }
   }
 
-
-  /* After form submit (and user data stored), 
-    if "remember me" checked, store username in localStorage
-    if "remember me" unchecked, delete username in localStorage (if it exists)
- */
-  if (rememberMe && usernameStored) {
-    window.localStorage.setItem("username" , usernameStored) ; 
-  }
-
-
   // if connected (token in Store), redirect to user page
   if (tokenStored) { 
-    return <Navigate to="/user" /> 
+    return <Navigate to="/user" replace/> 
   } 
 
   return (

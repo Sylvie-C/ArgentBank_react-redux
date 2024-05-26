@@ -6,8 +6,11 @@ export const fetchToken = async (bodyRequest) => {
 		const response = await fetch (
 			`${process.env.REACT_APP_BACKEND_URL}api/v1/user/login`
 			,
-			{ 	method: 'POST', headers: { 'Content-Type' : 'application/json' } ,
-				body: bodyRequest , }
+			{ 	
+        method: 'POST', 
+        headers: { 'Content-Type' : 'application/json' } ,
+				body: bodyRequest , 
+      }
 		) ;
 
 		if (response.status !== 200) {
@@ -29,7 +32,10 @@ export const fetchUser = async (token) => {
 		const response = await fetch (
 			`${process.env.REACT_APP_BACKEND_URL}api/v1/user/profile` 
 			, 
-			{ 	method: "POST" , headers: { Authorization: `Bearer ${token}`, } , }
+			{ 	
+        method: "POST" , 
+        headers: { Authorization: `Bearer ${token}`, } , 
+      }
 		); 
 		if (response.status !== 200){
 			throw new Error (`fetch POST token failed`) ; 

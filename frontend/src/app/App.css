@@ -16,3 +16,7 @@
   padding: 3rem 0; 
   background-color: #12002b;
 }
+
+button:hover {
+  cursor: pointer; 
+}
