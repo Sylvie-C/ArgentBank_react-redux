@@ -60,8 +60,7 @@ function Hero () {
   return (
     <div className="hero-container">
       {
-        editMode 
-        ? 
+        editMode ? 
         <>
           <h1>Edit User Info</h1>
           <form onSubmit={ (e) => formSubmit(e) } >

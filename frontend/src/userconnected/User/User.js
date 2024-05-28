@@ -1,42 +1,76 @@
+import { useState } from "react"; 
+
 import "./User.css"; 
 import Hero from "../components/Hero/Hero" ; 
+import Checking from "../components/Checking/Checking" ; 
+import Savings from "../components/Savings/Savings"; 
+import CreditCard from "../components/CreditCard/CreditCard"; 
+import Transactions from "../components/Transactions/Transactions"; 
 
 function User() {
+  const [ hero , setHero ] = useState (true) ; 
+  const [ checkingVisible , setCheckingVisibility ] = useState (true) ; 
+  const [ savingsVisible , setSavingsVisibility ] = useState (true) ; 
+  const [ creditcardVisible , setCreditcardVisibility ] = useState (true) ; 
+  const [ transactionsVisible , setTransactionsVisibility ] = useState (false); 
+  const [ transactionsId , setTransactionsId ] = useState ("") ; 
+
+  // on click on "Transactions" button, hide <Hero/> and unclicked account headers + display transactions details
+  const handleClick = (id) => { 
+
+    // Save transactions Id in local state
+    setTransactionsId(id) ; 
+
+    // on click on "Transactions" button, hide <Hero/>
+    setHero (false) ; 
+    
+    // handle display of account headers and transactions, according to clicked button id
+    switch (id) {
+      case "checking" : 
+        setSavingsVisibility(false) ; 
+        setCreditcardVisibility(false) ; 
+        setTransactionsVisibility(true) ; 
+      break; 
+      case "savings" : 
+        setCheckingVisibility(false) ; 
+        setCreditcardVisibility(false) ; 
+        setTransactionsVisibility(true) ; 
+      break; 
+      case "creditcard" : 
+        setCheckingVisibility(false); 
+        setSavingsVisibility(false); 
+        setTransactionsVisibility(true) ; 
+      break; 
+      case "X" : 
+        setCheckingVisibility(true); 
+        setSavingsVisibility(true); 
+        setCreditcardVisibility(true); 
+        setTransactionsVisibility(false); 
+      break; 
+      default: 
+    }
+  }
 
   return (
     <main className="user-container">
-      <Hero />
+      { hero && <Hero /> }
       <h2 className="sr-only">Accounts</h2>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-          <p className="account-amount">$2,082.79</p>
-          <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Savings (x6712)</h3>
-          <p className="account-amount">$10,928.42</p>
-          <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
-          <p className="account-amount">$184.30</p>
-          <p className="account-amount-description">Current Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
+      { 
+        checkingVisible && 
+        <Checking onClick={(id) => handleClick(id)} transactionsMode={transactionsVisible} /> 
+      }
+      { 
+        savingsVisible && 
+        <Savings onClick={(id) => handleClick(id)} transactionsMode={transactionsVisible} /> 
+      }
+      { 
+        creditcardVisible && 
+        <CreditCard onClick={ (id) => handleClick(id) } transactionsMode={transactionsVisible} /> 
+      }
+      {
+        transactionsVisible && 
+        <Transactions transactionsId={transactionsId} />
+      }
     </main>
   )
 }
