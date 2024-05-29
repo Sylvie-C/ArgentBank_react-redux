@@ -54,7 +54,7 @@
   [
     { 
       "date" : "26/05/2024" , 
-      "description" : "credidtcard data : Awesome computer" , 
+      "description" : "creditcard data : Awesome computer" , 
       "amount" : 1299.00 , 
       "balance" : -1000.00 , 
       "type" : "electronic" , 
