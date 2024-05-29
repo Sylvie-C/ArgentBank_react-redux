@@ -103,10 +103,10 @@ paths:
           description: Internal Server Error
   /user/transactions/checking: 
     get: 
-      summary: Returns all checking account transactions
+      summary: Returns an array of all checking account transactions
       responses:
         '200':
-          description: Returns an array of all checking account transactions
+          description: Checking account transactions returned successfully
           content:
             application/json:
               schema:
@@ -141,10 +141,10 @@ paths:
           description: Internal Server Error
   /user/transactions/savings:
       get: 
-      summary: Returns all checking account transactions
+      summary: Returns an array of all savings account transactions
       responses:
         '200':
-          description: Returns an array of all checking account transactions
+          description: Savings account transactions returned successfully
           content:
             application/json:
               schema:
@@ -179,10 +179,10 @@ paths:
           description: Internal Server Error
   /user/transactions/creditcard:
     get: 
-      summary: Returns all checking account transactions
+      summary: Returns an array of all creditcard account transactions
       responses:
         '200':
-          description: Returns an array of all checking account transactions
+          description: Credit card account transactions returned successfully
           content:
             application/json:
               schema:
