@@ -22,7 +22,7 @@ function Collapse ( {id , headerText , hiddenText } ) {
               </svg>
           </div>
           <div className= { visible ? "collapse__text--shown" : "collapse__text--hidden" } >
-              <p >{hiddenText}</p>
+              {hiddenText}
           </div>
       </div>
    )
