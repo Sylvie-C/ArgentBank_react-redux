@@ -103,7 +103,10 @@ paths:
           description: Internal Server Error
   /user/transactions/checking: 
     get: 
-      summary: Returns an array of all checking account transactions
+      security:
+        - Bearer: []
+      summary: Checking account transactions
+      description: Returns an array of checking account transactions
       responses:
         '200':
           description: Checking account transactions returned successfully
@@ -140,8 +143,11 @@ paths:
         '500':
           description: Internal Server Error
   /user/transactions/savings:
-      get: 
-      summary: Returns an array of all savings account transactions
+    get: 
+      security:
+        - Bearer: []
+      summary: Savings account transactions
+      description: Returns an array of savings account transactions
       responses:
         '200':
           description: Savings account transactions returned successfully
@@ -179,7 +185,10 @@ paths:
           description: Internal Server Error
   /user/transactions/creditcard:
     get: 
-      summary: Returns an array of all creditcard account transactions
+      security:
+        - Bearer: []      
+      summary: Credit card account transactions
+      description: Returns an array of credit card account transactions
       responses:
         '200':
           description: Credit card account transactions returned successfully
