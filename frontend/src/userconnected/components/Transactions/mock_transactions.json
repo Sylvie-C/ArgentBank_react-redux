@@ -16,7 +16,7 @@
       "amount" : 8 , 
       "balance" : 298 , 
       "type" : "electronic" , 
-      "category" : "food" , 
+      "category" : "Tech" , 
       "note" : "lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id dolor nec ex aliquet mattis eget et arcu. Praesent vulputate in dui vel aliquam. Duis id tellus nec urna euismod placerat. Nunc justo eros, pretium mattis odio in, consectetur consequat ligula. Fusce eget congue dui. "
     } , 
     {
@@ -24,8 +24,8 @@
       "description" : "Golden Sun Bakery" , 
       "amount" : 8 , 
       "balance" : 298 , 
-      "type" : "" , 
-      "category" : "" , 
+      "type" : "electronic" , 
+      "category" : "food" , 
       "note" : ""
     }
   ]
@@ -34,19 +34,19 @@
   [
     {
       "date" : "26/05/2024" , 
-      "description" : "savings data : Transfer from checking account" , 
+      "description" : "Transfer from acct x8349" , 
       "amount" : 0.02 , 
       "balance" : 298.02 , 
-      "type" : "electronic" , 
+      "type" : "transfer" , 
       "note" : ""
     } , 
     {
       "date" : "26/05/2024" , 
-      "description" : "savings data : Transfer from checking account" , 
+      "description" : "Deposit ArgentBank Agency 00457" , 
       "amount" : 50 , 
       "balance" : 348 , 
-      "type" : "electronic" , 
-      "note" : ""
+      "type" : "deposit" , 
+      "note" : "My deposit at desk agency of money street."
     }
   ]
   , 
@@ -68,7 +68,7 @@
       "balance" : -1600.00 , 
       "type" : "electronic" , 
       "category" : "Tech" , 
-      "note" : "Mobile phone to replace my old one"
+      "note" : "Mobile phone to replace my old one :D"
     } 
   ]
 }
