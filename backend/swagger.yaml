@@ -101,6 +101,127 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /user/transactions/checking: 
+    get: 
+      summary: Returns all checking account transactions
+      responses:
+        '200':
+          description: Returns an array of all checking account transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      example: "29/05/2024"
+                    description:
+                      type: string
+                      example: "My favourite supermarket"
+                    amount: 
+                      type: number
+                      format: double
+                      example: 200.00
+                    balance: 
+                      type: number
+                      format: double
+                      example: 1000.00
+                    type: 
+                      type: string
+                      example: "electronic"
+                    category:
+                      type: string
+                      example: "home"
+                    note: 
+                      type: string
+                      example: "my last purchase at supermarket"
+        '500':
+          description: Internal Server Error
+  /user/transactions/savings:
+      get: 
+      summary: Returns all checking account transactions
+      responses:
+        '200':
+          description: Returns an array of all checking account transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      example: "29/05/2024"
+                    description:
+                      type: string
+                      example: "Savings from my checking account"
+                    amount: 
+                      type: number
+                      format: double
+                      example: 200.00
+                    balance: 
+                      type: number
+                      format: double
+                      example: 1000.00
+                    type: 
+                      type: string
+                      example: "electronic"
+                    category:
+                      type: string
+                      example: "accounts transfer"
+                    note: 
+                      type: string
+                      example: "my last saving transaction"
+        '500':
+          description: Internal Server Error
+  /user/transactions/creditcard:
+    get: 
+      summary: Returns all checking account transactions
+      responses:
+        '200':
+          description: Returns an array of all checking account transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      example: "29/05/2024"
+                    description:
+                      type: string
+                      example: "My favourite supermarket"
+                    amount: 
+                      type: number
+                      format: double
+                      example: 200.00
+                    balance: 
+                      type: number
+                      format: double
+                      example: 1000.00
+                    type: 
+                      type: string
+                      example: "electronic"
+                    category:
+                      type: string
+                      example: "home"
+                    note: 
+                      type: string
+                      example: "my last purchase at supermarket"
+        '500':
+          description: Internal Server Error
+
+
+
+
+
+
+
 securityDefinitions:
   Bearer:
     type: apiKey
