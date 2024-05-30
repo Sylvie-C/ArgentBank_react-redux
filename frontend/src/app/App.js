@@ -13,7 +13,8 @@ import NotFound from '../components/NotFound/NotFound';
 import PrivateRoute from '../components/PrivateRoute';
 
 function App() {
-  
+  // window.localStorage.removeItem("username") ; 
+
   return (
     <div className="App">
       <Router>
