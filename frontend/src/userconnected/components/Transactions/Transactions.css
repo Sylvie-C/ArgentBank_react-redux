@@ -1,0 +1,28 @@
+
+.transactionsBlock-container {
+  display: flex; 
+  flex-direction: column; 
+}
+
+.transactionsBlock-content {
+  margin: auto;
+  background: white;
+  width: 80%; 
+}
+
+.transactionsBlock-header {
+  display: grid; 
+  grid-template-columns: 100px 300px 100px 100px;
+  text-align: start;
+
+  padding: 10px 0; 
+}
+
+
+@media (max-width: 480px) {
+  .transactionsBlock-header {
+    display: none; 
+    
+  }
+}
+

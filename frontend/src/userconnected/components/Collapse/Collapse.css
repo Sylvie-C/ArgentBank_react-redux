@@ -1,0 +1,85 @@
+.collapse {
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px 0; 
+}
+
+.collapseArrow {
+  width: 22px;
+  margin: 0 20px;
+  color: white;
+  transition: transform 0.3s;
+}
+
+.collapseArrow:hover {
+  cursor: pointer;
+}
+
+.rotateCollapseArrow {
+  transform: rotate(180deg);
+}
+
+
+
+/* ---------------------------------- */
+
+.collapse__btn {
+  width: 100%;
+  background: #42b983; 
+  border-radius: 10px;
+
+  text-align:start; 
+
+  display: flex;
+  align-items: center;
+}
+
+.btnText {
+  width: 100%;
+  color: white;
+  word-wrap: break-word; 
+
+  display: grid; 
+  
+  /* Same disposal for Header, in Transactions.css file */
+  grid-template-columns: 100px 300px 100px 100px; 
+}
+
+.collapse__text--hidden,
+.collapse__text--shown {
+    font-size: 14px;
+    width: calc(100% - 2px); 
+}
+
+.collapse__text--hidden {
+  max-height: 0px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.collapse__text--shown {
+    text-align: justify;
+    background: white;
+    border-radius: 0px 0px 5px 5px;
+
+    max-height: 200px;
+    opacity: 1;
+
+    transition: all 0.3s;
+}
+
+
+
+
+@media (max-width: 480px) {
+
+  .btnText {
+    display: flex; 
+    flex-direction: column; 
+  }
+
+  .btnText p {
+    margin: 0 10px; 
+  }
+}

@@ -1,0 +1,33 @@
+.hero-container {
+  color: #fff;
+  margin-bottom: 2rem;
+
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+.edit-button , .save-button , .cancel-button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+
+  transition: all 0.3s ; 
+  margin: 0 10px; 
+}
+
+.edit-button:hover , .save-button:hover , .cancel-button:hover {
+  cursor: pointer; 
+  background-color: #fff; 
+  color: #00bc77; 
+}
+
+.edit-button:hover {
+  border-radius: 30px;
+}
+
+input[disabled] {
+  color: black; 
+}
