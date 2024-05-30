@@ -18,6 +18,20 @@
   padding: 10px 0; 
 }
 
+.pencil-icon {
+  border: none; 
+  padding: 0; 
+  margin: 0 6px; 
+}
+
+.pencil-icon img {
+  width: 18px; 
+}
+
+.pencil-icon:hover {
+  cursor: pointer
+}
+
 
 @media (max-width: 480px) {
   .transactionsBlock-header {

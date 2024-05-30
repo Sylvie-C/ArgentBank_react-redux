@@ -1,7 +1,6 @@
 
 import "./Transactions.css" ; 
 import { fetchMockedData } from "./transactionsAPI" ;  
-
 import Collapse from "../Collapse/Collapse" ; 
 
 const mockedData = await fetchMockedData() ; 
@@ -26,6 +25,8 @@ function Transactions ( {transactionsId} ) {
     default: 
       transactionsDataArray = undefined; 
   }
+
+  const modalVisible = () => { alert ("ACCESS TO FORM")} ; 
 
   return(
     <section className="transactionsBlock-container">
@@ -53,8 +54,14 @@ function Transactions ( {transactionsId} ) {
                               hiddenText= {
                                 <>
                                   <p key={`type${index}`} >Transaction Type : {elt.type}</p>
-                                  <p key={`category${index}`} >Category : {elt.category}</p>
-                                  <p key={`note${index}`} >Note : {elt.note}</p>
+                                  <p key={`category${index}`} > 
+                                    Category : {elt.category} 
+                                    <button onClick={ modalVisible } className="pencil-icon" ><img src={require("../../img/pencil.webp")} alt="modify transaction category here" /></button>
+                                  </p>
+                                  <p key={`note${index}`} >
+                                    Note : {elt.note}
+                                    <button onClick={ modalVisible } className="pencil-icon" ><img src={require("../../img/pencil.webp")} alt="modify transaction note here" /></button>
+                                  </p>
                                 </>
                               }
                               key= {`transaction${index}`}          

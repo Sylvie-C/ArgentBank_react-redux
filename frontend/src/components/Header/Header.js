@@ -37,14 +37,14 @@ function Header () {
     editMode ? 
     <nav className="editmode-nav">
       <NavLink to="/" className="editmode-nav-logo" onClick={ () => signOut() } >
-        <img src={require("../../userconnected/img/connected_mode_01.png")} alt="" />
+        <img src={require("../../userconnected/img/connected_mode.webp")} alt="" />
         <h1>Argent Bank</h1>
       </NavLink>
       <div className="editmode-nav-usertools">
         <p>{username}</p>
-        <img onClick={ () => userSettings() } className="editmode-link" src={require("../../userconnected/img/user_01.png")} alt="user settings" />
-        <img /* onClick={ () => accountSettings() } */ className="editmode-link" src={require("../../userconnected/img/settings_01.png")} alt="account settings" />
-        <img onClick={ () => signOut() } className="editmode-link" src={require("../../userconnected/img/logout_01.png")} alt="logout" />
+        <img onClick={ () => userSettings() } className="editmode-link" src={require("../../userconnected/img/user.webp")} alt="user settings" />
+        <img /* onClick={ () => accountSettings() } */ className="editmode-link" src={require("../../userconnected/img/settings.webp")} alt="account settings" />
+        <img onClick={ () => signOut() } className="editmode-link" src={require("../../userconnected/img/logout.webp")} alt="logout" />
       </div>
     </nav>
     : 
