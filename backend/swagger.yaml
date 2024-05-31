@@ -182,6 +182,28 @@ paths:
         '500': 
           description: "Internal Server Error"
 
+    delete:
+     summary: Delete a Checking account details depending on Transaction ID
+     security:
+       - BearerAuth: []
+     parameters:
+       - name: id
+         in: path
+         required: true
+         description: id of transaction to be deleted
+         schema:
+           type: integer
+           format: int64
+           example: 1
+     responses:
+       '200':
+         description: Item Deleted successfully
+       '401':
+         description: Unauthorized
+       '500':
+         description: Unexpected Behaviour
+
+
   /user/transactions/savings:
     get: 
       security:
@@ -261,6 +283,28 @@ paths:
                       example: "New awesome mobile phone"
         '500': 
           description: "Internal Server Error"
+
+    delete:
+     summary: Delete a Savings account details depending on Transaction ID
+     security:
+       - BearerAuth: []
+     parameters:
+       - name: id
+         in: path
+         required: true
+         description: id of Transaction to be deleted
+         schema:
+           type: integer
+           format: int64
+           example: 1
+     responses:
+       '200':
+         description: Item Deleted successfully
+       '401':
+         description: Unauthorized
+       '500':
+         description: Unexpected Behaviour
+
 
   /user/transactions/creditcard:
     get: 
@@ -342,6 +386,26 @@ paths:
         '500': 
           description: "Internal Server Error"
 
+    delete:
+     summary: Delete a Credit Card account details depending on Transaction ID
+     security:
+       - BearerAuth: []
+     parameters:
+       - name: id
+         in: path
+         required: true
+         description: id of transaction to be deleted
+         schema:
+           type: integer
+           format: int64
+           example: 1
+     responses:
+       '200':
+         description: Item Deleted successfully
+       '401':
+         description: Unauthorized
+       '500':
+         description: Unexpected Behaviour
 
 components:
   securitySchemes:
@@ -428,7 +492,7 @@ definitions:
         readOnly: true
       category:
         type: string
-        description: Select tab for transaction category (food, tech, ... )
+        description: Entry field for transaction category (food, tech, ... )
       note:
         type: string
         description: Entry field for user personal note. 
