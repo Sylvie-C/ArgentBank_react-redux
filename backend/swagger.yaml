@@ -149,7 +149,7 @@ paths:
   /user/transactions/checking/{transaction_id}: 
     patch: 
       summary: Checking account transaction details
-      description: Enables user to Create or Update details of one transaction ("Transaction Type" , "Category" , "Note")
+      description: Enables user to Create or Update details of one transaction ("Category" , "Note")
       security:
         - BearerAuth: []
       parameters:
@@ -173,9 +173,6 @@ paths:
                 items:
                   type: object
                   properties:
-                    type:
-                      type: string
-                      example: "electronic"
                     category:
                       type: string
                       example: "tech"
@@ -232,7 +229,7 @@ paths:
   /user/transactions/savings/{transaction_id}: 
     patch: 
       summary: Savings account transaction details
-      description: Enables user to Create or Update details of one transaction ("Transaction Type" , "Category" , "Note")
+      description: Enables user to Create or Update details of one transaction ("Category" , "Note")
       security:
         - BearerAuth: []
       parameters:
@@ -256,9 +253,6 @@ paths:
                 items:
                   type: object
                   properties:
-                    type:
-                      type: string
-                      example: "electronic"
                     category:
                       type: string
                       example: "tech"
@@ -315,7 +309,7 @@ paths:
   /user/transactions/creditcard/{transaction_id}: 
     patch: 
       summary: Credit card account transaction details
-      description: Enables user to Create or Update details of one transaction ("Transaction Type" , "Category" , "Note")
+      description: Enables user to Create or Update details of one transaction ("Category" , "Note")
       security:
         - BearerAuth: []
       parameters:
@@ -339,9 +333,6 @@ paths:
                 items:
                   type: object
                   properties:
-                    type:
-                      type: string
-                      example: "electronic"
                     category:
                       type: string
                       example: "tech"
