@@ -425,7 +425,7 @@ definitions:
         readOnly: true
       type: 
         type: string
-        description: Select tab for transaction type (electronic, transfer, withdrawal, deposit)
+        readOnly: true
       category:
         type: string
         description: Select tab for transaction category (food, tech, ... )
