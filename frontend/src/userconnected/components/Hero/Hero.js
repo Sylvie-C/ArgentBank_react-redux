@@ -18,12 +18,8 @@ function Hero () {
 
   let username ; 
   // Current Session : if user checks "remember me", use username in Redux Store
-  if ( !window.localStorage.getItem("username") ) {
-    if (rememberMe) {
-      username = usernameStored; 
-    }else{
-      username = "" ; 
-    }
+  if ( !window.localStorage.getItem("username") && rememberMe ) {
+    username = usernameStored; 
   }else {
     // Previous Session : if user has checked "remember me", use username in localStorage
     username = window.localStorage.getItem("username") ; 
