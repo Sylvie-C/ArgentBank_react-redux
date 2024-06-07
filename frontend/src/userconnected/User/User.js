@@ -2,14 +2,7 @@ import { useState } from "react";
 
 import "./User.css"; 
 import Hero from "../components/Hero/Hero" ; 
-import Checking from "../components/Checking/Checking" ; 
-import Savings from "../components/Savings/Savings"; 
-import CreditCard from "../components/CreditCard/CreditCard"; 
-
-
 import Account from "../components/Account/Account" ; 
-
-
 import Transactions from "../components/Transactions/Transactions"; 
 
 function User() {
