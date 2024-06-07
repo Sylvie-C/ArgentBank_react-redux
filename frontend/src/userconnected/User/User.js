@@ -5,6 +5,11 @@ import Hero from "../components/Hero/Hero" ;
 import Checking from "../components/Checking/Checking" ; 
 import Savings from "../components/Savings/Savings"; 
 import CreditCard from "../components/CreditCard/CreditCard"; 
+
+
+import Account from "../components/Account/Account" ; 
+
+
 import Transactions from "../components/Transactions/Transactions"; 
 
 function User() {
@@ -57,15 +62,32 @@ function User() {
       <h2 className="sr-only">Accounts</h2>
       { 
         checkingVisible && 
-        <Checking onClick={(id) => handleClick(id)} transactionsMode={transactionsVisible} /> 
+        <Account  onClick={ (id) => handleClick(id) } 
+                  transactionsMode={transactionsVisible}  
+                  accountId="checking"
+                  title="Argent Bank Checking (x8349)"
+                  amount="$2,082.79"
+        />
       }
       { 
         savingsVisible && 
-        <Savings onClick={(id) => handleClick(id)} transactionsMode={transactionsVisible} /> 
+        <Account  
+          onClick={ (id) => handleClick(id) } 
+          transactionsMode={transactionsVisible}  
+          accountId="savings"
+          title="Argent Bank Savings (x6712)"
+          amount="$10,928.42"
+        />
       }
       { 
         creditcardVisible && 
-        <CreditCard onClick={ (id) => handleClick(id) } transactionsMode={transactionsVisible} /> 
+        <Account  
+          onClick={ (id) => handleClick(id) } 
+          transactionsMode={transactionsVisible}  
+          accountId="creditcard"
+          title="Argent Bank Credit Card (x8349)"
+          amount="$184.30"
+        />
       }
       {
         transactionsVisible && 

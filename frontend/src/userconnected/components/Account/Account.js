@@ -1,5 +1,6 @@
 
-function Checking ( { onClick , transactionsMode } ) {
+
+function Account ( { onClick , transactionsMode , accountId , title , amount } ) {
 
   const handleClick = (evt) => {    
     // on click on button, send button identifier (data-id) to Parent component
@@ -9,8 +10,8 @@ function Checking ( { onClick , transactionsMode } ) {
   return (
     <section className="account">
       <div className="account-content-wrapper">
-        <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-        <p className="account-amount">$2,082.79</p>
+        <h3 className="account-title">{title}</h3>
+        <p className="account-amount">{amount}</p>
         <p className="account-amount-description">Available Balance</p>
       </div>
       <div className="account-content-wrapper cta">
@@ -20,12 +21,13 @@ function Checking ( { onClick , transactionsMode } ) {
             X
           </button>
           : 
-          <button className="transaction-button" data-transid="checking" onClick={ (e) => handleClick(e) }>
+          <button className="transaction-button" data-transid={accountId} onClick={ (e) => handleClick(e) }>
             View Transactions
           </button>
         }
       </div>
     </section>
-  ); 
+  )
 }
-export default Checking; 
+
+export default Account ; 
