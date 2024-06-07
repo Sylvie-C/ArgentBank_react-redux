@@ -1,4 +1,29 @@
 import "./Home.css"; 
+import HomeIcon from "../../components/HomeIcon/HomeIcon" ; 
+import chatImg from "../../img/optimized/icon-chat.webp" ; 
+import moneyImg from "../../img/optimized/icon-money.webp" ; 
+import securityImg from "../../img/optimized/icon-security.webp" ; 
+
+const iconsData = [
+  {
+    img : chatImg , 
+    imgAlt : "Chat Icon" , 
+    title : "You are our #1 priority" , 
+    text : "Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes."
+  } , 
+  {
+    img : moneyImg , 
+    imgAlt : "Money Icon" , 
+    title : "More savings means higher rates" , 
+    text : "The more you save with us, the higher your interest rate will be!"
+  } , 
+  {
+    img : securityImg , 
+    imgAlt : "Security Icon" , 
+    title : "Security you can trust" , 
+    text : "We use top of the line encryption to make sure your data and money is always safe."
+  }
+] ; 
 
 function Home () {
   return (
@@ -14,37 +39,20 @@ function Home () {
       </div>
       <section className="features">
         <h2 className="sr-only">Features</h2>
-        <div className="feature-item">
-          <img src={require("../../img/optimized/icon-chat.webp")} alt="Chat Icon" className="feature-icon" />
-          <h3 className="feature-item-title">You are our #1 priority</h3>
-          <p>
-            Need to talk to a representative? You can get in touch through our
-            24/7 chat or through a phone call in less than 5 minutes.
-          </p>
-        </div>
-        <div className="feature-item">
-          <img
-            src={ require("../../img/optimized/icon-money.webp") }
-            alt="Chat Icon"
-            className="feature-icon"
-          />
-          <h3 className="feature-item-title">More savings means higher rates</h3>
-          <p>
-            The more you save with us, the higher your interest rate will be!
-          </p>
-        </div>
-        <div className="feature-item">
-          <img
-            src= { require("../../img/optimized/icon-security.webp") }
-            alt="Chat Icon"
-            className="feature-icon"
-          />
-          <h3 className="feature-item-title">Security you can trust</h3>
-          <p>
-            We use top of the line encryption to make sure your data and money
-            is always safe.
-          </p>
-        </div>
+
+        {
+          iconsData.map (
+            (elt , index) => (
+              <HomeIcon img = { elt.img }
+                        imgAlt = { elt.imgAlt } 
+                        title = { elt.title }
+                        text = { elt.text }
+                        key = { `icon${index}` }
+              /> 
+            )
+          )
+        }
+
       </section>
     </main>
   )
