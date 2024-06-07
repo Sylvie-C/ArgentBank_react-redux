@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom" ;
 import { useSelector, useDispatch } from "react-redux" ;
 
 import "./Header.css" ;  
-import { getToken , getEditmode } from "../../app/selectors" ; 
+import { getToken , getEditmode , getUser } from "../../app/selectors" ; 
 import { resetToken } from "../../features/SignIn/signInSlice" ; 
 
 import { setEditmode , unsetEditmode } from "../../userconnected/User/userSlice";  
@@ -12,17 +12,18 @@ function Header () {
   const username = window.localStorage.getItem("username") ; 
   const token = useSelector(getToken) ;
   const editMode = useSelector(getEditmode) ; 
+  const userData = useSelector(getUser) ; 
+
+  console.log ("userData ? : " , userData) ; 
 
   const dispatch = useDispatch() ; 
 
   // -------  EDIT MODE NAVBAR FUNCTIONS  ------
-
-  // onclick, display user settings component
+  
   const userSettings = () => {
     dispatch (setEditmode()) ; 
   }
 
-  // if global state has token or editmode===true, reset all.
   const signOut = () => { 
     if (token) {
       dispatch( resetToken() ) ; 
@@ -36,14 +37,18 @@ function Header () {
   return (
     editMode ? 
     <nav className="editmode-nav">
-      <NavLink to="/" className="editmode-nav-logo" onClick={ () => signOut() } >
+      <NavLink to="/" className="editmode-nav-logo" >
         <img src={require("../../userconnected/img/connected_mode.webp")} alt="" />
         <h1>Argent Bank</h1>
       </NavLink>
       <div className="editmode-nav-usertools">
         <p>{username}</p>
-        <img onClick={ () => userSettings() } className="editmode-link" src={require("../../userconnected/img/user.webp")} alt="user settings" />
-        <img /* onClick={ () => accountSettings() } */ className="editmode-link" src={require("../../userconnected/img/settings.webp")} alt="account settings" />
+
+        <NavLink to="/user">
+          <img className="editmode-link" src={require("../../userconnected/img/user.webp")} alt="user settings" />
+        </NavLink>
+
+        <img className="editmode-link" src={require("../../userconnected/img/settings.webp")} alt="account settings" />
         <img onClick={ () => signOut() } className="editmode-link" src={require("../../userconnected/img/logout.webp")} alt="logout" />
       </div>
     </nav>
@@ -57,10 +62,18 @@ function Header () {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
-      <NavLink to={token ? "/" : "/signin"} className="main-nav-item" onClick={ signOut }>
+
+     <div>
         <i className="fa fa-user-circle"></i>
-        {token ? "Sign out" : "Sign in"}
-      </NavLink>
+  
+        <NavLink to="/user" className="main-nav-item" title="user space">
+          { token && userData.firstName } { token && userData.lastName }
+        </NavLink>
+  
+        <NavLink to={ token ? "/" : "/signin" } onClick={ signOut } className="main-nav-item">
+          {token ? "Sign out" : "Sign in"}
+        </NavLink>
+     </div>
     </nav>
   )
 }
