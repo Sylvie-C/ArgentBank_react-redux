@@ -5,7 +5,7 @@ import "./Header.css" ;
 import { getToken , getEditmode , getUser } from "../../app/selectors" ; 
 import { resetToken } from "../../features/SignIn/signInSlice" ; 
 
-import { setEditmode , unsetEditmode } from "../../userconnected/User/userSlice";  
+import { unsetEditmode } from "../../userconnected/User/userSlice";  
 
 
 function Header () {
@@ -14,15 +14,9 @@ function Header () {
   const editMode = useSelector(getEditmode) ; 
   const userData = useSelector(getUser) ; 
 
-  console.log ("userData ? : " , userData) ; 
-
   const dispatch = useDispatch() ; 
 
   // -------  EDIT MODE NAVBAR FUNCTIONS  ------
-  
-  const userSettings = () => {
-    dispatch (setEditmode()) ; 
-  }
 
   const signOut = () => { 
     if (token) {
@@ -66,9 +60,11 @@ function Header () {
      <div>
         <i className="fa fa-user-circle"></i>
   
-        <NavLink to="/user" className="main-nav-item" title="user space">
-          { token && userData.firstName } { token && userData.lastName }
-        </NavLink>
+        { token && 
+          <NavLink to="/user" className="main-nav-item" title="user space">
+            { userData.firstName } { userData.lastName }
+          </NavLink>
+        }
   
         <NavLink to={ token ? "/" : "/signin" } onClick={ signOut } className="main-nav-item">
           {token ? "Sign out" : "Sign in"}

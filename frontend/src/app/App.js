@@ -7,6 +7,7 @@ import Header from "../components/Header/Header" ;
 import Home from "../components/Home/Home" ; 
 import SignIn from '../features/SignIn/SignIn';
 import User from "../userconnected/User/User" ; 
+import Transactions from "../userconnected/components/Transactions/Transactions" ; 
 import Footer from "../components/Footer/Footer" ; 
 import NotFound from '../components/NotFound/NotFound';
 
@@ -30,6 +31,12 @@ function App() {
           <Route path="/user" element={ 
             <PrivateRoute>
               <User/>
+            </PrivateRoute> 
+          }/>
+
+          <Route path="/:accountId/transactions" element={ 
+            <PrivateRoute>
+              <Transactions/>
             </PrivateRoute> 
           }/>
         </Routes>

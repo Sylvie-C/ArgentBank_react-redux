@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom" ; 
 
+import "./Account.css" ; 
 
 function Account ( { onClick , transactionsMode , accountId , title , amount } ) {
 
-  const handleClick = (evt) => {    
-    // on click on button, send button identifier (data-id) to Parent component
+  const handleClick = (evt) => { 
     onClick(evt.currentTarget.dataset.transid) ;  
   }
 
@@ -15,15 +16,13 @@ function Account ( { onClick , transactionsMode , accountId , title , amount } )
         <p className="account-amount-description">Available Balance</p>
       </div>
       <div className="account-content-wrapper cta">
-        { 
-          transactionsMode ?
+      
+        {transactionsMode ?
           <button className="transactionClose-button" data-transid="X" onClick={ (e) => handleClick(e) } >
             X
           </button>
           : 
-          <button className="transaction-button" data-transid={accountId} onClick={ (e) => handleClick(e) }>
-            View Transactions
-          </button>
+          <Link to={`/${accountId}/transactions`} className="transaction-button" >TRANSACTIONS VIEW</Link>
         }
       </div>
     </section>

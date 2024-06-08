@@ -8,6 +8,7 @@ host: localhost:3001
 basePath: /api/v1
 schemes:
   - http
+  
 paths:
   /user/login:
     post:
@@ -65,8 +66,7 @@ paths:
         - User Module
       summary: User Profile API
       description: API for fetching a user profile
-      #produces:
-       # - application/json
+
       responses:
         '200':
           description: User profile retrieved successully
@@ -101,259 +101,110 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  
-  /user/transactions/checking: 
-    get: 
+
+  /{accountId}/transactions:
+    get:
       security:
         - Bearer: []
       tags:
         - Transactions Module
-      summary: Checking account transactions
-      description: Returns an array of checking account transactions
-      responses:
-        '200':
-          description: Checking account transactions returned successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    date:
-                      type: string
-                      example: "29/05/2024"
-                    description:
-                      type: string
-                      example: "My favourite supermarket"
-                    amount: 
-                      type: number
-                      format: double
-                      example: 200.00
-                    balance: 
-                      type: number
-                      format: double
-                      example: 1000.00
-                    type: 
-                      type: string
-                      example: "electronic"
-                    category:
-                      type: string
-                      example: "home"
-                    note: 
-                      type: string
-                      example: "my last purchase at supermarket"
-        '500':
-          description: Internal Server Error
-  /user/transactions/checking/{transaction_id}: 
-    patch: 
-      summary: Checking account transaction details
-      description: Enables user to Create or Update details of one transaction ("Transaction Type" , "Category" , "Note")
-      security:
-        - BearerAuth: []
+      summary: Account transactions
+      description: Returns all transactions for an account
       parameters:
-        - name: id
+        - name: accountId
           in: path
           required: true
-          description: id of transaction to be updated
+          type: string
+      responses:
+        "200":
+          description: transactions
           schema:
-            type: integer
-            format: int64
-            example: 1
-      tags: 
-        - Transactions Module
-      responses: 
-        '200':
-          description: Transaction details modified successfully.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                      example: "electronic"
-                    category:
-                      type: string
-                      example: "tech"
-                    note: 
-                      type: string
-                      example: "New awesome mobile phone"
-        '500': 
-          description: "Internal Server Error"
+            type: array
+            items:
+              $ref: "#/definitions/Transaction"
+        "401":
+          description: Unauthorized
 
-  /user/transactions/savings:
-    get: 
+  /{accountId}/transactions/{transactionId}:
+    get:
       security:
         - Bearer: []
       tags:
         - Transactions Module
-      summary: Savings account transactions
-      description: Returns an array of savings account transactions
-      responses:
-        '200':
-          description: Savings account transactions returned successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    date:
-                      type: string
-                      example: "29/05/2024"
-                    description:
-                      type: string
-                      example: "Savings from my checking account"
-                    amount: 
-                      type: number
-                      format: double
-                      example: 200.00
-                    balance: 
-                      type: number
-                      format: double
-                      example: 1000.00
-                    type: 
-                      type: string
-                      example: "electronic"
-                    category:
-                      type: string
-                      example: "accounts transfer"
-                    note: 
-                      type: string
-                      example: "my last saving transaction"
-        '500':
-          description: Internal Server Error
-  /user/transactions/savings/{transaction_id}: 
-    patch: 
-      summary: Savings account transaction details
-      description: Enables user to Create or Update details of one transaction ("Transaction Type" , "Category" , "Note")
-      security:
-        - BearerAuth: []
+      summary: Transaction details
+      description: Returns all details of a transaction, according to its ID
       parameters:
-        - name: id
+        - name: accountId
           in: path
           required: true
-          description: id of transaction to be updated
+          type: string
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: transaction details
           schema:
-            type: integer
-            format: int64
-            example: 1
-      tags: 
-        - Transactions Module
-      responses: 
-        '200':
-          description: Transaction details modified successfully.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                      example: "electronic"
-                    category:
-                      type: string
-                      example: "tech"
-                    note: 
-                      type: string
-                      example: "New awesome mobile phone"
-        '500': 
-          description: "Internal Server Error"
+            $ref: "#/definitions/Transaction"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
 
-  /user/transactions/creditcard:
-    get: 
+    patch:
       security:
-        - Bearer: []  
+        - Bearer: []
       tags:
         - Transactions Module
-      summary: Credit card account transactions
-      description: Returns an array of credit card account transactions
-      responses:
-        '200':
-          description: Credit card account transactions returned successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    date:
-                      type: string
-                      example: "29/05/2024"
-                    description:
-                      type: string
-                      example: "My favourite supermarket"
-                    amount: 
-                      type: number
-                      format: double
-                      example: 200.00
-                    balance: 
-                      type: number
-                      format: double
-                      example: 1000.00
-                    type: 
-                      type: string
-                      example: "electronic"
-                    category:
-                      type: string
-                      example: "home"
-                    note: 
-                      type: string
-                      example: "my last purchase at supermarket"
-        '500':
-          description: Internal Server Error
-  /user/transactions/creditcard/{transaction_id}: 
-    patch: 
-      summary: Credit card account transaction details
-      description: Enables user to Create or Update details of one transaction ("Transaction Type" , "Category" , "Note")
-      security:
-        - BearerAuth: []
+      summary: Transaction details
+      description: Edit Category or Note details of a transaction
       parameters:
-        - name: id
+        - name: accountId
           in: path
           required: true
-          description: id of transaction to be updated
+          type: string
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+        - in: body
+          name: transaction
+          description: Update Category and Note details using body request
+          required: true
           schema:
-            type: integer
-            format: int64
-            example: 1
-      tags: 
+            $ref: "#/definitions/Transaction"
+      responses:
+        "200":
+          description: Transaction details updated successfully
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
+
+    delete:
+      security:
+        - Bearer: []
+      tags:
         - Transactions Module
-      responses: 
-        '200':
-          description: Transaction details modified successfully.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    type:
-                      type: string
-                      example: "electronic"
-                    category:
-                      type: string
-                      example: "tech"
-                    note: 
-                      type: string
-                      example: "New awesome mobile phone"
-        '500': 
-          description: "Internal Server Error"
-
-
-components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
+      summary: Delete transaction Category or Note details
+      description: Delete a transaction details (Category , Personal note)
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          type: string
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Transaction details deleted successfully
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not found
 
 
 securityDefinitions:
@@ -413,7 +264,8 @@ definitions:
     properties:
       userName:
         type: string
-  Transaction: 
+  
+  Transaction:
     type: object
     properties:
       id:
@@ -429,12 +281,11 @@ definitions:
       balance:
         type: number
         readOnly: true
-      type: 
-        type: string
-        description: Select tab for transaction type (electronic, transfer, withdrawal, deposit)
       category:
         type: string
-        description: Select tab for transaction category (food, tech, ... )
+        description: transaction category
       note:
         type: string
-        description: Entry field for user personal note. 
+        description: personal note about transaction
+  
+  
