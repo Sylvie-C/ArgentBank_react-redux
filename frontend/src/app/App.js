@@ -36,7 +36,7 @@ function App() {
             </PrivateRoute> 
           }/>
 
-          <Route path="/:accountId/transactions" element={ 
+          <Route path="/transactions/:accountId" element={ 
             <PrivateRoute>
               <Transactions/>
             </PrivateRoute> 

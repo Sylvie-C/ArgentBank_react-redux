@@ -22,7 +22,7 @@ function Account ( { onClick , transactionsMode , accountId , title , amount } )
             X
           </button>
           : 
-          <Link to={`/${accountId}/transactions`} className="transaction-button" >TRANSACTIONS VIEW</Link>
+          <Link to={`/transactions/${accountId}`} className="transaction-button" >TRANSACTIONS VIEW</Link>
         }
       </div>
     </section>
