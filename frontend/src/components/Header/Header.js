@@ -2,17 +2,18 @@ import { NavLink } from "react-router-dom" ;
 import { useSelector, useDispatch } from "react-redux" ;
 
 import "./Header.css" ;  
-import { getToken , getEditmode , getUser } from "../../app/selectors" ; 
+import { getToken , getEditmode , getUsername } from "../../app/selectors" ; 
 import { resetToken } from "../../features/SignIn/signInSlice" ; 
 
 import { unsetEditmode } from "../../userconnected/User/userSlice";  
 
 
 function Header () {
-  const username = window.localStorage.getItem("username") ; 
+  const usernameStored = useSelector(getUsername) ; 
+  const username = (window.localStorage.getItem("username")) || usernameStored ; 
+  
   const token = useSelector(getToken) ;
   const editMode = useSelector(getEditmode) ; 
-  const userData = useSelector(getUser) ; 
 
   const dispatch = useDispatch() ; 
 
@@ -26,7 +27,6 @@ function Header () {
       dispatch( unsetEditmode() ) ; 
     }
   }
-
 
   return (
     editMode ? 
@@ -62,7 +62,7 @@ function Header () {
   
         { token && 
           <NavLink to="/user" className="main-nav-item" title="user space">
-            { userData.firstName } { userData.lastName }
+            {username}
           </NavLink>
         }
   

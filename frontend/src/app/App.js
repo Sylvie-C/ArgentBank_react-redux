@@ -14,7 +14,9 @@ import NotFound from '../components/NotFound/NotFound';
 import PrivateRoute from '../components/PrivateRoute';
 
 function App() {
-  // window.localStorage.removeItem("username") ; 
+/*   window.localStorage.removeItem("username") ; 
+  window.localStorage.removeItem("name") ; 
+  window.localStorage.removeItem("surname") ;  */
 
   return (
     <div className="App">

@@ -3,29 +3,25 @@ import { useDispatch , useSelector } from "react-redux";
 
 import "./Hero.css" ; 
 import { setEditmode , unsetEditmode , setUsername } from "../../User/userSlice";
-import { getToken , getEditmode , getUser , getRememberme } from "../../../app/selectors";
+import { getToken , getEditmode , getUser , getUsername , getRememberme } from "../../../app/selectors";
 import { usernameDbUpdate } from "../../User/userAPI" ; 
 
-
 function Hero () {
-  const token = useSelector(getToken) ; 
-  const editMode = useSelector(getEditmode) ; 
-  const userFirstname = useSelector(getUser).firstName ; 
-  const userLastname = useSelector(getUser).lastName ; 
-  const usernameStored = useSelector(getUser).userName ; 
-
-  const rememberMe = useSelector(getRememberme) ; // current session "remember me" checkbox
-
-  let username ; 
-  // Current Session : if user checks "remember me", use username in Redux Store
-  if ( !window.localStorage.getItem("username") && rememberMe ) {
-    username = usernameStored; 
-  }else {
-    // Previous Session : if user has checked "remember me", use username in localStorage
-    username = window.localStorage.getItem("username") ; 
-  }
 
   const dispatch = useDispatch() ; 
+
+  const token = useSelector(getToken) ; 
+
+  const nameStored = useSelector(getUser).firstName ; 
+  const surnameStored = useSelector(getUser).lastName ; 
+  const usernameStored = useSelector(getUsername) ; 
+
+  const editMode = useSelector(getEditmode) ; 
+  const rememberMe = useSelector(getRememberme) ; // current session "remember me" checkbox
+
+  const username = (window.localStorage.getItem("username")) || (usernameStored) ; 
+  const userFirstname = (window.localStorage.getItem("name")) || (nameStored) ; 
+  const userLastname = (window.localStorage.getItem("surname")) || (surnameStored) ;
 
   // onClick on "Edit name" button, display Edit user info form
   const editNameFn = () => { dispatch(setEditmode()) ; }
@@ -78,7 +74,11 @@ function Hero () {
         </>
         : 
         <>
-          <h1>Welcome back<br />{username}</h1>
+          <h1>Welcome back<br />
+            { rememberMe && 
+              <span>{userFirstname} {userLastname}</span>
+            }
+          </h1>
           <button className="edit-button" onClick={ editNameFn } >Edit Name</button>
         </>
       }
