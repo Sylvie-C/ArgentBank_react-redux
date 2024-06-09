@@ -157,11 +157,15 @@ paths:
         - Transactions Module
       summary: Update Transaction details
       description: Update Category and Note details for a specific transaction
-      parameters: 
-        - name: transactionId
-          in: path
+
+      parameters:
+        - in: body
+          name: transactionId
+          description: transaction detail payload
           required: true
-          type: number
+          schema:
+            $ref: "#/definitions/TransactionDetails"
+
       responses: 
         "200" : 
           description: Transaction details updated sucessfully
@@ -266,5 +270,13 @@ definitions:
         type: string
         description: personal note about transaction
 
-    
+  TransactionDetails: 
+    type: string
+    properties:
+      category:
+        type: string
+        description: transaction category
+      note:
+        type: string
+        description: transaction personal note
   
